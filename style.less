@@ -1,0 +1,59 @@
+@import url('~ant-design-vue/es/style/themes/index.less');
+
+@pace-color: orange;
+
+.pacebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: @white;
+  overflow: hidden;
+
+  transition: opacity 0.1s ease;
+
+  z-index: -1;
+  visibility: hidden;
+  opacity: 0;
+}
+.pacebar.active {
+  z-index: 19891020;
+  visibility: visible;
+  opacity: 1;
+}
+.pacebar-progress {
+  position: absolute;
+  /*top: 10%;*/
+  width: 0%;
+  height: 100%;
+  background: @pace-color;
+  // background: linear-gradient(to right, @pace-color 60%, @white);
+  overflow: hidden;
+}
+.pacebar-progress:before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 100%;
+  top: 0;
+  left: -200px;
+  overflow: hidden;
+  background: linear-gradient(
+    left,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+
+  animation: animations 5s ease-out infinite;
+}
+@keyframes animations {
+  0% {
+    left: -200px;
+  }
+  100% {
+    left: 100%;
+  }
+}
